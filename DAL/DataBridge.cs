@@ -51,6 +51,7 @@ namespace DAL
 			}
 			catch(Exception ex)
 			{
+                mLastError += ex.Message;
 			}
 		}
         
@@ -80,7 +81,7 @@ namespace DAL
             }
         }
 
-        public string ConcatinateSimbol
+        public string ConcatSimbol
         {
             get
             {

@@ -131,7 +131,7 @@ namespace Crypt
 
         //    switch (languageID)
         //    {
-        //        case (int)Constants.Constants.Classifiers.Romanian_Language:
+        //        case (int)Constants.Classifiers.Romanian_Language:
 
         //            switch (inputNumber)
         //            {
@@ -257,7 +257,7 @@ namespace Crypt
         //            break;
 
 
-        //        case (int)Constants.Constants.Classifiers.Russian_Language:
+        //        case (int)Constants.Classifiers.Russian_Language:
 
         //            switch (inputNumber)
         //            {
@@ -382,7 +382,7 @@ namespace Crypt
 
         //            break;
 
-        //        case (int)Constants.Constants.Classifiers.English_Language:
+        //        case (int)Constants.Classifiers.English_Language:
 
         //            switch (inputNumber)
         //            {
@@ -511,15 +511,15 @@ namespace Crypt
 
         //    switch (languageID)
         //    {
-        //        case (int)Constants.Constants.Classifiers.Romanian_Language:
+        //        case (int)Constants.Classifiers.Romanian_Language:
         //            result = "Numarul introdus este prea mare";
         //            break;
 
-        //        case (int)Constants.Constants.Classifiers.Russian_Language:
+        //        case (int)Constants.Classifiers.Russian_Language:
         //            result = "Введенный номер слишком большой";
         //            break;
 
-        //        case (int)Constants.Constants.Classifiers.English_Language:
+        //        case (int)Constants.Classifiers.English_Language:
         //            result = "The number entered is too large";
         //            break;
         //    }
@@ -533,15 +533,15 @@ namespace Crypt
 
         //    switch (languageID)
         //    {
-        //        case (int)Constants.Constants.Classifiers.Romanian_Language:
+        //        case (int)Constants.Classifiers.Romanian_Language:
         //            result = "și";
         //            break;
 
-        //        case (int)Constants.Constants.Classifiers.Russian_Language:
+        //        case (int)Constants.Classifiers.Russian_Language:
         //            result = "";
         //            break;
 
-        //        case (int)Constants.Constants.Classifiers.English_Language:
+        //        case (int)Constants.Classifiers.English_Language:
         //            result = "";
         //            break;
         //    }
@@ -556,11 +556,11 @@ namespace Crypt
 
             switch (languageID)
             {
-                case (int)Constants.Constants.Classifiers.Romanian_Language:
+                case (int)Constants.Classifiers.Romanian_Language:
                     valutaWord = "lei";
                     break;
 
-                case (int)Constants.Constants.Classifiers.Russian_Language:
+                case (int)Constants.Classifiers.Russian_Language:
                     valutaWord = "рублей";
                     break;
 
@@ -575,7 +575,7 @@ namespace Crypt
 
             switch (languageID)
             {
-                case (int)Constants.Constants.Classifiers.Romanian_Language:
+                case (int)Constants.Classifiers.Romanian_Language:
                     switch (amount)
                     {
                         default:
@@ -584,7 +584,7 @@ namespace Crypt
                     }
                     break;
 
-                case (int)Constants.Constants.Classifiers.Russian_Language:
+                case (int)Constants.Classifiers.Russian_Language:
                     switch (amount)
                     {
                         case 1:
@@ -615,11 +615,11 @@ namespace Crypt
 
             switch (languageID)
             {
-                case (int)Constants.Constants.Classifiers.Romanian_Language:
+                case (int)Constants.Classifiers.Romanian_Language:
                     valutaCentWord = "bani";
                     break;
 
-                case (int)Constants.Constants.Classifiers.Russian_Language:
+                case (int)Constants.Classifiers.Russian_Language:
                     valutaCentWord = "копеек";
                     break;
             }
@@ -924,33 +924,33 @@ namespace Crypt
 
             switch (languageID)
             {
-                case (int)Constants.Constants.Classifiers.Romanian_Language:
+                case (int)Constants.Classifiers.Romanian_Language:
 
                     int pinaLaVirgula = (int)(Math.Abs(number));
                     int dupaVirgula = (int)((Math.Abs(number) - pinaLaVirgula) * 100);
 
                     switch (numberWordMode)
                     {
-                        case (int)Constants.Constants.NumberWordMode.Money:
+                        case (int)Constants.NumberWordMode.Money:
                             result = GetSumInWords_ROM(pinaLaVirgula) + " " + GetWordsAfterPoint(languageID, dupaVirgula);
                             break;
 
-                        case (int)Constants.Constants.NumberWordMode.SimpleNumber:
+                        case (int)Constants.NumberWordMode.SimpleNumber:
                             result = GetSumInWords_ROM(pinaLaVirgula) + " intreg , " + (dupaVirgula == 0 ? "00" : (dupaVirgula < 10 ? "0" + dupaVirgula.ToString() : dupaVirgula.ToString()));
                             break;
 
-                        case (int)Constants.Constants.NumberWordMode.Percent:
+                        case (int)Constants.NumberWordMode.Percent:
                             result = GetSumInWords_ROM(pinaLaVirgula) + " intreg , " + (dupaVirgula == 0 ? "00" : (dupaVirgula < 10 ? "0" + dupaVirgula.ToString() : dupaVirgula.ToString())) + " procente";
                             break;
                     }
 
                     break;
 
-                case (int)Constants.Constants.Classifiers.Russian_Language:
+                case (int)Constants.Classifiers.Russian_Language:
 
                     break;
 
-                case (int)Constants.Constants.Classifiers.English_Language:
+                case (int)Constants.Classifiers.English_Language:
 
                     break;
             }
@@ -964,41 +964,41 @@ namespace Crypt
 
             switch (languageID)
             {
-                case (int)Constants.Constants.Classifiers.Romanian_Language:
+                case (int)Constants.Classifiers.Romanian_Language:
                     switch (valutaID)
                     {
-                        case (int)Constants.Constants.CurrencyList.MDL:
+                        case (int)Constants.CurrencyList.MDL:
                             result = infinitiv ? "lei moldovenesti" : "leului moldovenesc";
                             break;
-                        case (int)Constants.Constants.CurrencyList.USD:
+                        case (int)Constants.CurrencyList.USD:
                             result = infinitiv ? "dolari SUA" : "dolarului SUA";
                             break;
-                        case (int)Constants.Constants.CurrencyList.EURO:
+                        case (int)Constants.CurrencyList.EURO:
                             result = infinitiv ? "EURO" : "EURO";
                             break;
                     }
                     break;
 
-                case (int)Constants.Constants.Classifiers.Russian_Language:
+                case (int)Constants.Classifiers.Russian_Language:
                     switch (valutaID)
                     {
-                        case (int)Constants.Constants.CurrencyList.MDL:
+                        case (int)Constants.CurrencyList.MDL:
                             break;
-                        case (int)Constants.Constants.CurrencyList.USD:
+                        case (int)Constants.CurrencyList.USD:
                             break;
-                        case (int)Constants.Constants.CurrencyList.EURO:
+                        case (int)Constants.CurrencyList.EURO:
                             break;
                     }
                     break;
 
-                case (int)Constants.Constants.Classifiers.English_Language:
+                case (int)Constants.Classifiers.English_Language:
                     switch (valutaID)
                     {
-                        case (int)Constants.Constants.CurrencyList.MDL:
+                        case (int)Constants.CurrencyList.MDL:
                             break;
-                        case (int)Constants.Constants.CurrencyList.USD:
+                        case (int)Constants.CurrencyList.USD:
                             break;
-                        case (int)Constants.Constants.CurrencyList.EURO:
+                        case (int)Constants.CurrencyList.EURO:
                             break;
                     }
                     break;
@@ -1011,22 +1011,22 @@ namespace Crypt
         {
             string result = string.Empty;
 
-            if (firstValuta == (int)Constants.Constants.CurrencyList.MDL && secondValuta == (int)Constants.Constants.CurrencyList.USD)
+            if (firstValuta == (int)Constants.CurrencyList.MDL && secondValuta == (int)Constants.CurrencyList.USD)
             {
                 result = "MDL/USD";
             }
             else
-                if (firstValuta == (int)Constants.Constants.CurrencyList.USD && secondValuta == (int)Constants.Constants.CurrencyList.MDL)
+                if (firstValuta == (int)Constants.CurrencyList.USD && secondValuta == (int)Constants.CurrencyList.MDL)
                 {
                     result = "USD/MDL";
                 }
                 else
-                    if (firstValuta == (int)Constants.Constants.CurrencyList.MDL && secondValuta == (int)Constants.Constants.CurrencyList.EURO)
+                    if (firstValuta == (int)Constants.CurrencyList.MDL && secondValuta == (int)Constants.CurrencyList.EURO)
                     {
                         result = "MDL/EURO";
                     }
                     else
-                        if (firstValuta == (int)Constants.Constants.CurrencyList.EURO && secondValuta == (int)Constants.Constants.CurrencyList.MDL)
+                        if (firstValuta == (int)Constants.CurrencyList.EURO && secondValuta == (int)Constants.CurrencyList.MDL)
                         { result = "EURO/MDL"; }
 
             return result;
@@ -1039,7 +1039,7 @@ namespace Crypt
 
             switch (languageID)
             {
-                case (int)Constants.Constants.Classifiers.Romanian_Language:
+                case (int)Constants.Classifiers.Romanian_Language:
 
                     switch (montNumber)
                     {
@@ -1083,7 +1083,7 @@ namespace Crypt
 
                     break;
 
-                case (int)Constants.Constants.Classifiers.Russian_Language:
+                case (int)Constants.Classifiers.Russian_Language:
 
                     switch (montNumber)
                     {
@@ -1127,7 +1127,7 @@ namespace Crypt
 
                     break;
 
-                case (int)Constants.Constants.Classifiers.English_Language:
+                case (int)Constants.Classifiers.English_Language:
 
                     switch (montNumber)
                     {
@@ -1185,7 +1185,7 @@ namespace Crypt
                 int inputData_Month = inputDate.Month;
                 int inputData_Year = inputDate.Year;
 
-                result = " " + inputData_Day.ToString() + " " + GetNameOfMonthBymonthNumber((int)Constants.Constants.Classifiers.Romanian_Language, inputData_Month) + " " + inputData_Year.ToString();
+                result = " " + inputData_Day.ToString() + " " + GetNameOfMonthBymonthNumber((int)Constants.Classifiers.Romanian_Language, inputData_Month) + " " + inputData_Year.ToString();
             }
 
             return result;
@@ -1201,10 +1201,10 @@ namespace Crypt
                 int inputData_Month = inputDate.Month;
                 int inputData_Year = inputDate.Year;
 
-                string dayWordString = Crypt.Utils.GetSumInWord(inputData_Day, (int)Constants.Constants.Classifiers.Romanian_Language, (int)Constants.Constants.NumberWordMode.SimpleNumber);
-                string yearWordString = Crypt.Utils.GetSumInWord(inputData_Year, (int)Constants.Constants.Classifiers.Romanian_Language, (int)Constants.Constants.NumberWordMode.SimpleNumber);
+                string dayWordString = Crypt.Utils.GetSumInWord(inputData_Day, (int)Constants.Classifiers.Romanian_Language, (int)Constants.NumberWordMode.SimpleNumber);
+                string yearWordString = Crypt.Utils.GetSumInWord(inputData_Year, (int)Constants.Classifiers.Romanian_Language, (int)Constants.NumberWordMode.SimpleNumber);
 
-                result = " " + dayWordString + " " + GetNameOfMonthBymonthNumber((int)Constants.Constants.Classifiers.Romanian_Language, inputData_Month) + " anul " + yearWordString;
+                result = " " + dayWordString + " " + GetNameOfMonthBymonthNumber((int)Constants.Classifiers.Romanian_Language, inputData_Month) + " anul " + yearWordString;
             }
 
             return result;
@@ -2413,7 +2413,7 @@ namespace Crypt
                             resultString += ",";
                         }
 
-                        resultString += "'" + val.ToString(Constants.Constants.ISODateTimeMillisec3DecimalsFormat) + "'";
+                        resultString += "'" + val.ToString(Constants.ISODateTimeMillisec3DecimalsFormat) + "'";
                     }
                 }
             }

@@ -8,8 +8,8 @@
     <ProjectGuid>{78862D13-BE13-4718-9D99-EAEFE1678706}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CoreConfig</RootNamespace>
-    <AssemblyName>CoreConfig</AssemblyName>
+    <RootNamespace>Config</RootNamespace>
+    <AssemblyName>Config</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

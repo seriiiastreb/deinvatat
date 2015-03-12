@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{77D06797-37B9-4BAD-81EA-B448A8051784}</ProjectGuid>
+    <ProjectGuid>{3D672E38-C0DB-4E51-934D-086373A7A925}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Constants</RootNamespace>
-    <AssemblyName>Constants</AssemblyName>
+    <RootNamespace>Security</RootNamespace>
+    <AssemblyName>Security</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -35,16 +35,36 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="MainClass.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="Permissions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrar.cs" />
+    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Config\Config.csproj">
+      <Project>{78862D13-BE13-4718-9D99-EAEFE1678706}</Project>
+      <Name>Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Constants\Constants.csproj">
+      <Project>{77D06797-37B9-4BAD-81EA-B448A8051784}</Project>
+      <Name>Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crypt\Crypt.csproj">
+      <Project>{8D6A12A0-4A29-4E79-96CF-20F6D08755F8}</Project>
+      <Name>Crypt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{F34E2C98-4DF3-4162-9A6C-E4DA530839FD}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -52,4 +72,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

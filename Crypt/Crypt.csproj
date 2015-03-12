@@ -8,8 +8,8 @@
     <ProjectGuid>{8D6A12A0-4A29-4E79-96CF-20F6D08755F8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CoreCrypt</RootNamespace>
-    <AssemblyName>CoreCrypt</AssemblyName>
+    <RootNamespace>Crypt</RootNamespace>
+    <AssemblyName>Crypt</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

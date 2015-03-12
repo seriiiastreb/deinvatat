@@ -4,6 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CoreSite", "CoreSite\", "{27B87E09-2B05-451E-8371-BC6ED5895BD6}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
+		ProjectReferences = "{77D06797-37B9-4BAD-81EA-B448A8051784}|Constants.dll;{3D672E38-C0DB-4E51-934D-086373A7A925}|Security.dll;{78862D13-BE13-4718-9D99-EAEFE1678706}|Config.dll;{8D6A12A0-4A29-4E79-96CF-20F6D08755F8}|Crypt.dll;{F34E2C98-4DF3-4162-9A6C-E4DA530839FD}|HRPM.DAL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/CoreSite"
 		Debug.AspNetCompiler.PhysicalPath = "CoreSite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\CoreSite\"
@@ -28,6 +29,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypt", "Crypt\Crypt.csproj", "{8D6A12A0-4A29-4E79-96CF-20F6D08755F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constants", "Constants\Constants.csproj", "{77D06797-37B9-4BAD-81EA-B448A8051784}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security", "Security\Security.csproj", "{3D672E38-C0DB-4E51-934D-086373A7A925}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +58,10 @@ Global
 		{77D06797-37B9-4BAD-81EA-B448A8051784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77D06797-37B9-4BAD-81EA-B448A8051784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77D06797-37B9-4BAD-81EA-B448A8051784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D672E38-C0DB-4E51-934D-086373A7A925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D672E38-C0DB-4E51-934D-086373A7A925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D672E38-C0DB-4E51-934D-086373A7A925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D672E38-C0DB-4E51-934D-086373A7A925}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

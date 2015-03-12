@@ -5,16 +5,144 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="~/css/reset.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/css/text.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/css/grid.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/css/layout.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/css/nav.css" media="screen" />
+    <!--[if IE 6]><link rel="stylesheet" type="text/css" href="~/css/ie6.css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="~/css/ie.css" media="screen" /><![endif]-->
+    <script type="text/javascript" src="~/scripts/mootools-1.2.1-core.js"></script>
+    <script type="text/javascript" src="~/scripts/mootools-1.2-more.js"></script>
+    <script type="text/javascript" src="~/scripts/mootools-fluid16-autoselect.js"></script>
+
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+
+
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    <form id="mainForm" runat="server">
+
+    <div class="container_16">
+			<div class="grid_16">
+				<div style="float:left;  text-align:left; width:29%; font-size: 35px; margin-left:30px;">LOGO HERE</div>
+                <div style="float:left; text-align:center; margin: auto; width: 29%;">  
+                <div style="clear:both; text-align:left;"></div>
+                  <% Response.Write(navMainMenu); %>
+                </div>  
+                <div style="float:right; width:39%; padding-top:7px;"> 
+                    <div style="float:right; margin-right:10px; " >
+                        <asp:HyperLink ID="LogInLogOutLinkButton" CssClass="button black bigrounded" runat="server" onload="LogInLogOutLinkButton_Load" > </asp:HyperLink>                   
+                    </div>       
+                    <div id="emailRegion" runat="server" style="float:right; margin-right:10px; "> 
+                        <img ID="emailBoxButton" Width="20" height="20" alt="Email Box" title="Email Box" src="~/images/mail_simple.png" style="margin-top:7px; cursor:pointer; " onclick="OpenEmailBox();" runat="server" />                
+                    </div>         
+                </div>
+			</div>
+			<div class="clear"></div>
+			<div class="grid_16">
+				<ul class="nav main">
+					<li>
+						<a href="../12/">Fluid 12-column</a>
+						<ul>
+							<li>
+								<a href="../12/fluid/mootools/">MooTools</a>
+							</li>
+							<li>
+								<a href="../12/fluid/jquery/">jQuery</a>
+							</li>
+							<li>
+								<a href="../12/fluid/none/">No Javascript</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="../16/">Fluid 16-column</a>
+						<ul>
+							<li>
+								<a href="../16/fluid/mootools/">MooTools</a>
+							</li>
+							<li>
+								<a href="../16/fluid/jquery/">jQuery</a>
+							</li>
+							<li>
+								<a href="../16/fluid/none/">No Javascript</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="../12/fixed/">Fixed 12-column</a>
+						<ul>
+							<li>
+								<a href="../12/fixed/mootools/">MooTools</a>
+							</li>
+							<li>
+								<a href="../12/fixed/jquery/">jQuery</a>
+							</li>
+							<li>
+								<a href="../12/fixed/none/">No Javascript</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="../16/fixed/">Fixed 16-column</a>
+						<ul>
+							<li>
+								<a href="../16/fixed/mootools/">MooTools</a>
+							</li>
+							<li>
+								<a href="../16/fixed/jquery/">jQuery</a>
+							</li>
+							<li>
+								<a href="../16/fixed/none/">No Javascript</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="http://symphony-cms.com/discuss/thread/231/">Download / Forum</a>
+						<ul>
+							<li>
+								<a href="http://github.com/bauhouse/fluid960gs/tree/">Download: Github</a>
+							</li>
+							<li>
+								<a href="http://github.com/bauhouse/sym-fluid960gs/tree/">Symphony Ensemble</a>
+							</li>
+							<li>
+								<a href="http://symphony-cms.com/discuss/thread/231/">Forum Discussion</a>
+							</li>
+						</ul>
+					</li>
+					<li class="secondary">
+						<a href="http://960.gs/" title="960.gs | A CSS grid system developed by Nathan Smith">The 960 Grid System</a>
+					</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+
+			<asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
-        </asp:ContentPlaceHolder>
-    </div>
+            </asp:ContentPlaceHolder>
+
+			<div class="grid_16" id="site_info">
+				<div class="box">
+					<p>Fluid 960 Grid System, processed by SERGIU</p>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
     </form>
 </body>
 </html>
