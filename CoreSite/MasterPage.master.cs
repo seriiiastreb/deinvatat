@@ -38,4 +38,30 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
         navMainMenu = resulAutentification && Session["MenuObject"] != null ? (string)Session["MenuObject"] : string.Empty;
     }
+
+    protected string WriteAppPath()
+    {
+        string appPath = Utils.GetApplicationPath(Request);
+        return appPath;
+    }
+
+    protected void LogInLogOutLinkButton_Load(object sender, EventArgs e)
+    {
+        if (Utils.AutentificatedUser)
+        {
+            string firstName = Utils.UserObject().FirstName;
+            string lastName = Utils.UserObject().LastName;
+            LogInLogOutLinkButton.Text = firstName + " " + lastName + " | Log OUT";
+            LogInLogOutLinkButton.NavigateUrl = "~/Default.aspx?action=logout";
+
+            emailBoxButton.Visible = true;
+        }
+        else
+        {
+            LogInLogOutLinkButton.Text = "Log IN";
+            LogInLogOutLinkButton.NavigateUrl = "~/Default.aspx?area=login";
+
+            emailBoxButton.Visible = false;
+        }
+    }
 }
