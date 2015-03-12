@@ -11,6 +11,9 @@ using System.Web;
 
 public class Utils
 {
+    public const string SessionKey_UserObject = "UserObject";
+
+
 	public Utils()
 	{
 	}
@@ -337,7 +340,6 @@ public class Utils
     }
     #endregion Email	
 
-
     public static void FillSelector(DropDownList destinationDDl, DataTable inputTable, string displayTextField, string valueField)
     {
         try
@@ -365,8 +367,7 @@ public class Utils
         }
         catch { }
     }
-
-
+    
     public static string GetApplicationPath(HttpRequest Request)
     {
         string appPath = Request.ApplicationPath;
@@ -422,6 +423,7 @@ public class Utils
         return result;
     }
 
+
     public static IMasterItems GetMaster(System.Web.UI.Page page)
     {
         IMasterItems myMaster = (IMasterItems)page.Master;
@@ -430,8 +432,9 @@ public class Utils
 
     public static Security.User UserObject()
     {
-        Security.User mUserObject = (Security.User)HttpContext.Current.Session["UserObject"];
-        if (mUserObject == null) HttpContext.Current.Response.Redirect(Utils.GetApplicationPath(HttpContext.Current.Request) + "/Default.aspx");
+        Security.User mUserObject = (Security.User)HttpContext.Current.Session[SessionKey_UserObject];
+        if (mUserObject == null) 
+            HttpContext.Current.Response.Redirect(Utils.GetApplicationPath(HttpContext.Current.Request) + "/Default.aspx");
         return mUserObject;
     }
 
@@ -454,7 +457,7 @@ public class Utils
         get
         {
             bool resulAutentification = false;
-            Security.User userOBJ = (Security.User)HttpContext.Current.Session["UserObject"];
+            Security.User userOBJ = (Security.User)HttpContext.Current.Session[Utils.SessionKey_UserObject];
 
             if (userOBJ != null && userOBJ.UserID != 0)
                 resulAutentification = true;
