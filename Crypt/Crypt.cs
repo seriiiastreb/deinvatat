@@ -123,6 +123,19 @@ namespace Crypt
 
     public class Utils
     {
+
+        public static bool IsDigitsOnly(string str)
+        {
+            for (int index = 0; index < str.Length; index++)
+            {
+                char c = str[index];
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+
         #region  Convert Valuta in Words
 
         //private static string GetNameOfSimpleNumber(int inputNumber, int languageID, bool MaculGen)
