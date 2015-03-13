@@ -104,16 +104,37 @@ public class Constants
         Percent = 2,
         SimpleNumber = 3
     }
-
+    
     public class InfoBoxMessageType
     {
-        public const int Error = 2;
-        public const int Important = 4;
         public const int Info = 0;
-        public const int Ok = 3;
-        public const int Question = 5;
         public const int Warning = 1;
+        public const int Error = 2;
+        public const int Ok = 3;
+        public const int Important = 4;
+        public const int Question = 5;
+        public const int Cancel = 6;
     }
+
+    public class ConfirmationDialogResponseType
+    {
+        public const int Yes = 1;
+        public const int No = 2;
+        public const int Cancel = 3;
+    }
+
+    public class DaysOfWeek
+    {
+        public const int Monday = 1;
+        public const int Tuesday = 2;
+        public const int Wednesday = 3;
+        public const int Thursday = 4;
+        public const int Friday = 5;
+        public const int Saturday = 6;
+        public const int Sunday = 7;
+    }
+
+
 
     public class EmailMessageStatus
     {

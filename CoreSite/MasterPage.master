@@ -1,10 +1,13 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register TagPrefix="ajax" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
+<%@ Register TagPrefix="ibox" TagName="InfoBox" Src="~/Controls/InfoWindow.ascx" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head >
+<head>
     <title></title>
+
     <link rel="stylesheet" type="text/css" href="<% Response.Write(WriteAppPath()); %>/css/reset.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<% Response.Write(WriteAppPath()); %>/css/text.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<% Response.Write(WriteAppPath()); %>/css/grid.css" media="screen" />
@@ -18,13 +21,13 @@
 
     <asp:ContentPlaceHolder id="headPlaceHolder" runat="server">
     </asp:ContentPlaceHolder>
-
-
 </head>
 <body>
     <form id="mainForm" runat="server">
 
-    <div class="container_16">
+    <ajax:toolkitscriptmanager ID="ajaxToolkitScriptManager" runat="server"></ajax:toolkitscriptmanager>   
+
+    <div class="container_16" id="mainDIV" runat="server">
 			<div class="grid_16">
 				<div style="float:left;  text-align:left; width:29%; font-size: 35px; margin-left:30px;">LOGO HERE</div>
                 <div style="float:left; text-align:center; margin: auto; width: 29%;">  

@@ -7,12 +7,15 @@ using System.IO;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Collections.Specialized;
 
 
 public class Utils
 {
     public const string SessionKey_UserObject = "UserObject";
-
+    public const string SessionKey_ModuleSecurity = "ModuleSecurity";
 
 	public Utils()
 	{
@@ -387,6 +390,27 @@ public class Utils
         return buildNumberSplited[buildNumberSplited.Length - 1];
     }
 
+    public static void RedirectIfSslRequired(HttpRequest Request, HttpResponse Response)
+    {
+        bool msNoSsl = false;
+
+        if (ConfigurationManager.AppSettings["noSSL"] != null && !string.IsNullOrEmpty(ConfigurationManager.AppSettings["noSSL"]))
+        {
+            bool.TryParse(ConfigurationManager.AppSettings["noSSL"], out msNoSsl);
+        }
+
+        if (!msNoSsl
+            && Request.IsSecureConnection.Equals(false)
+            && Request.ServerVariables["SERVER_NAME"] != "localhost"
+            && !Request.UserHostAddress.StartsWith("192.168"))
+        {
+            string secureURL = "https://";
+            secureURL += Request.ServerVariables["SERVER_NAME"];
+            secureURL += Request.ServerVariables["URL"];
+            Response.Redirect(secureURL);
+        }
+    }
+
     public static bool ContentTypeAllowed(string contentType)
     {
         bool result = false;
@@ -423,6 +447,18 @@ public class Utils
         return result;
     }
 
+    public static string GetQueryString(System.Web.HttpRequest Request, Page page)
+    {
+        string queryString = "";
+
+        NameValueCollection qs = Request.QueryString;
+
+        foreach (string key in qs.AllKeys)
+            foreach (string value in qs.GetValues(key))
+                queryString += page.Server.UrlEncode(key) + "=" + page.Server.UrlEncode(value) + "&";
+
+        return queryString.TrimEnd('&');
+    }
 
     public static IMasterItems GetMaster(System.Web.UI.Page page)
     {
@@ -438,6 +474,19 @@ public class Utils
         return mUserObject;
     }
 
+    public static Security.Module ModuleSecurity()
+    {
+        Security.Module mModuleSecurity = (Security.Module)HttpContext.Current.Session[SessionKey_ModuleSecurity];
+        if (mModuleSecurity == null) 
+        {
+            //// to do store all request in encoded string
+            HttpContext.Current.Response.Redirect(Utils.GetApplicationPath(HttpContext.Current.Request) + "/Login.aspx");
+        }
+
+        //FormsAuthentication.RedirectToLoginPage(Utils.GetQueryString(HttpContext.Current.Request, HttpContext.Current.RewritePath  this.Page));
+
+        return mModuleSecurity;
+    }
 
     public static bool PermissionAllowed(string moduleName, string domainName, Constants.Classifiers permission)
     {

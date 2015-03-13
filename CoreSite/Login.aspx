@@ -14,7 +14,7 @@
 				<p class="notice">Login to complete your action.</p>
 				<p>
 					<label>Username: </label>
-                    <asp:TextBox ID="logintextBox" runat="server" ></asp:TextBox>
+                    <asp:TextBox ID="userNameTextBox" runat="server" ></asp:TextBox>
 				</p>
 				<p>
 					<label>Password: </label>
