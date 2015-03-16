@@ -11,39 +11,10 @@ public class Constants
         CountryList = 3,
         GenderList = 4,
         LanguageList = 5,
-        SystemUserRecordStatus = 6
-        //EconomicActivity = 7,
-        //Province = 8,
-        //HomeType = 9,
-        //ProffesionalSituation = 10,
-        //ProffesionalExperience = 11,
-        //StudyLevel = 12,
-        //HousingSituation = 13,
-        //CivilStatus = 14,
-        //SocialStatus = 15,
-        //Biserica = 16,
-        //SectorAfaceri = 17,
-        //FormaDeInregistrareItreprindere = 18,
-        //ModDeCalculDobinda = 19,
-        //SursaDeVenit = 20,
-        //LocDeMunca = 21,
-        //TipDeInstruire = 22,
-        //PayPeriod = 23,
-        //roundType = 24,
-        //typeOfCalculation = 25,
-        //contractCategory = 26,
-        //TipEvaluareConsultare = 27,
-        //StareaAfacerii = 28,
-        //Permissions = 29,
-        //Programs = 30,
-        //CalculatePenaltyFrom = 31,
-        //SuprafataTerenAgricol = 32,
-        //SituatiaMateriala = 33,
-        //ClientCategories = 50,
-        //PledgeType = 53,
-        //LoanAproveStatus = 55,
-        //MinimProcentPeriod = 56,
-        //CreditState = 60
+        SystemUserRecordStatus = 6,
+        Province = 7,
+        Permissions = 8,
+
     }
 
     public enum Classifiers
@@ -52,50 +23,16 @@ public class Constants
         Russian_Language = 2,
         English_Language = 3,
 
+        PasswordStatus_Active = 6,
+        PasswordStatus_NeedChange = 7,
+
         UserRecord_Active = 8,
         UserRecord_Blocked = 9,
-        UserRecord__NotActivated = 10,
+        UserRecord_NotActivated = 10,    
 
-        //OdataLaDouaSaptamini = 291,
-        //OdataLaDouaLuni = 292,
-        //MonthlyPayment = 293,
-        //QuarterlyPaymnet = 294,
-        //Half_yearPaymnet = 295,
-        //AnnuallyPayment = 296,
-        //RoundTypeDeFacto = 297,
-        //RoundTypeOnFirstPayment = 299,
-        //RoundTypeOnLastPaymnet = 300,
-        //Percent_DinSumaInitiala = 301,
-        //Percent_DinSumaRamasa = 302,
-        //SumaFixa = 303,
-        //ContractCategory_Normal = 306,
-        //ContractCategory_Bad = 307,
-
-        //ContractProgram_StartUp = 320,
-        //ContractProgram_AIA = 321,
-        //ContractProgram_DAP = 322,
-
-        //CalculatePenalty_DeLaSumaIntirzierii = 323,
-        //CalculatePenalty_DinSumaInitiala = 324,
-        //CalculatePenalty_SumaFixa = 325,
-
-        Permissions_View = 344,
-        Permissions_Edit = 345,
-        Permissions_Deny = 346,
-        //AproveStatus_NotAproved = 400,
-        //AproveStatus_Aprove = 401,
-        //AproveStatus_NeedAdditinalInfo = 402,
-
-        //Persoana_Juridica = 415,
-
-        //CreditState_InAsteptareAprobare = 421,
-        //CreditState_Renuntat = 422,
-        //CreditState_Refuzat = 423,
-        //CreditState_Achitat = 424,
-        //CreditState_Activ = 425,
-        //CreditState_InchisRestructurat = 432,
-        //CreditState_InchisAnticipat = 433,
-        //CreditState_SpreEliberareNumerer = 434
+        Permissions_View = 267,
+        Permissions_Edit = 268,
+        Permissions_Deny = 269,       
     }
 
     public enum NumberWordMode
@@ -156,12 +93,12 @@ public class Constants
         public const int Email = 2;
     }
 
-    //public class UserOperation
-    //{
-    //    public const string Edit = "Edit";
-    //    public const string New = "New";
-    //    public const string Delete = "Delete";
-    //}
+    public class UserOperation
+    {
+        public const string Edit = "Edit";
+        public const string New = "New";
+        public const string Delete = "Delete";
+    }
 
     //public class ReportNames
     //{
