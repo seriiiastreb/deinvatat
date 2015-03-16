@@ -35,17 +35,15 @@ public partial class Login : System.Web.UI.Page
         if (!MaintenanceMode())
         {
             // If already logged in
-            DataTable userData = (DataTable)Session[Utils.SessionKey_UserObject];
+            Security.User userObject = (Security.User)Session[Utils.SessionKey_UserObject];
             string userName = string.Empty;
 
-            if (userData != null && userData.Rows.Count == 1)
+            if (userObject != null)
             {
-                userName = (string)userData.Rows[0]["login"];
-                int passwordStatus = 0;
-                int.TryParse(userData.Rows[0]["passwordstatus"].ToString(), out passwordStatus);
+                userName = userObject.UserLogin;                
 
                 // if user is active 
-                if (userName != string.Empty && passwordStatus == 1)
+                if (userName != string.Empty)
                 {
                     FormsAuthentication.RedirectFromLoginPage(userName, false);
                 }
@@ -53,7 +51,7 @@ public partial class Login : System.Web.UI.Page
         }
         else
         {
-            //errorLabel.Text = "Sorry. This site is closed for maintenance. Please check back soon.";
+            Utils.GetMaster(this).ShowMessage((int)Constants.InfoBoxMessageType.Info, "Sorry.....", "This site is closed for maintenance. Please check back soon.");
         }
     }
 
@@ -67,10 +65,6 @@ public partial class Login : System.Web.UI.Page
 
     protected void loginButton_Click(object sender, EventArgs e)
     {
-        // sleep a while to harden brute-force login hacking
-        int millisecondsToSleep = 3000;
-        System.Threading.Thread.Sleep(millisecondsToSleep);
-
         string userIP = " IP:" + Request.UserHostAddress;
         try
         {
@@ -110,7 +104,7 @@ public partial class Login : System.Web.UI.Page
     {
         bool result = false;
 
-        if (Session[Utils.SessionKey_UserObject] != null) Session["UserObject"] = null;
+        if (Session[Utils.SessionKey_UserObject] != null) Session[Utils.SessionKey_UserObject] = null;
 
         if (login.Contains("'") || login.Contains(" ") || password.Contains("'") || password.Contains(" "))
         {
@@ -121,7 +115,9 @@ public partial class Login : System.Web.UI.Page
         if (userObject == null) throw new Exception("Null user object received");
 
         msLogger.Info("Login attempt.  " + userObject.UserLogin + " - UserObject created. Creating modules...");
-        Session["UserObject"] = userObject;
+
+        Session[Utils.SessionKey_UserObject] = userObject;
+        Session[Utils.SessionKey_ModuleSecurity] = new Security.Module();
 
         CreateModulesByRole(userObject);
 
@@ -132,7 +128,7 @@ public partial class Login : System.Web.UI.Page
 
     private void CreateModulesByRole(Security.User userObject)
     {
- 
+        
 
     }
 

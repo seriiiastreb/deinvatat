@@ -16,6 +16,7 @@ public class Utils
 {
     public const string SessionKey_UserObject = "UserObject";
     public const string SessionKey_ModuleSecurity = "ModuleSecurity";
+    public const string SessionKey_ModuleMain = "ModuleMain";
 
 	public Utils()
 	{
@@ -487,6 +488,19 @@ public class Utils
 
         return mModuleSecurity;
     }
+
+    public static Security.MainModule ModuleMain()
+    {
+        Security.MainModule mModuleMain = (Security.MainModule)HttpContext.Current.Session[SessionKey_ModuleMain];
+        if (mModuleMain == null)
+        {
+            //// to do store all request in encoded string
+            HttpContext.Current.Response.Redirect(Utils.GetApplicationPath(HttpContext.Current.Request) + "/Login.aspx");
+        }
+
+        return mModuleMain;
+    }
+
 
     public static bool PermissionAllowed(string moduleName, string domainName, Constants.Classifiers permission)
     {
