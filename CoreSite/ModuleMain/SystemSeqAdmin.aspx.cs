@@ -17,13 +17,37 @@ public partial class SystemSeqAdmin : System.Web.UI.Page
 
         bool allowHere = Utils.PermissionAllowed(mCurrentModule, Security.Domains.Administration.Name, Constants.Classifiers.Permissions_View);
         if (allowHere)
-        {           
+        {
+            FIll_ExperimentGrid();
         }
         else
         {
            // Response.Redirect(Utils.GetApplicationPath(Request) + "/AccessDenied.aspx");
         }       
     }
+
+    protected void FIll_ExperimentGrid()
+    {
+        DataTable sourceDT = new DataTable();
+        sourceDT.Columns.Add("Column1", typeof(string));
+        sourceDT.Columns.Add("Column2", typeof(string));
+        sourceDT.Columns.Add("Column3", typeof(string));
+        sourceDT.Columns.Add("Column4", typeof(string));
+        sourceDT.Columns.Add("Column5", typeof(string));
+
+        sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
+        sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
+        sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
+        sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
+        sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
+        sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
+        sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
+        sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
+
+        //ExperimentGrid.DataSource = sourceDT;
+        //ExperimentGrid.DataBind();
+    }
+
 
     //#region General Functions
 
@@ -884,8 +908,5 @@ public partial class SystemSeqAdmin : System.Web.UI.Page
     //#endregion Users Region
 
 
-    protected void categoryesTreeView_SelectedNodeChanged(object sender, EventArgs e)
-    {
-
-    }
+    
 }
