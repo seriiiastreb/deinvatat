@@ -35,8 +35,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainPlaceHolder" Runat="Server">  
 
-    <div style="width:92%; padding:20px;">
-        <div style="float:left; width:200px; border:1px solid black; height:300px;">
+    <div style="width:92%; padding:20px; float: left;">
+        <div style="float:left; width:200px; border:1px solid black; ">
             <div class="box">
 		        <h2>
 			        <a href="#" id="toggle-list-items">System Management</a>
@@ -58,24 +58,63 @@
                 </div>
             </div>
 
-
-          <%--  <asp:TreeView runat="server" ID="categoryesTreeView"  Width="100%" Height="100%"   ShowLines="true" CssClass="Menu" onselectednodechanged="categoryesTreeView_SelectedNodeChanged" >
-                <Nodes>
-                    <asp:TreeNode Value="0" Text="Users and Grousp" Expanded="True"> 
-                        <asp:TreeNode Value="01" Text="Users" Expanded="True"></asp:TreeNode>
-                        <asp:TreeNode Value="02" Text="Groups" Expanded="True"></asp:TreeNode>
-                        <asp:TreeNode Value="03" Text="Domains" Expanded="True"></asp:TreeNode>
-                    </asp:TreeNode>
-
-                </Nodes>
-                <SelectedNodeStyle BackColor="#B7E9E7" />
-            </asp:TreeView>--%>
         </div>
-        <div style="float:left; width:auto; height:300px; ">
-           <div class="context-menu-one box menu-1">
-                <strong>right click me</strong>
+        <%--<div style="float:left; width: 700px; padding-left: 15px;">
+           <div class="context-menu-one" style="border:1px solid black; ">                
+                <div class="box">
+	                <h2>
+		                <a href="#" id="toggle-tables" style="cursor: pointer;" class="hidden">Tables</a>
+	                </h2>
+	                <div style="margin: 0px; position: static; overflow: hidden;">
+		                <div class="block" id="tables" style="margin: 0px;">
+			                <table>
+				                <tbody>
+					                <tr>
+						                <th>Lorem ipsum</th>
+						                <td>Dolor sit</td>
+						                <td class="currency">$125.00</td>
+					                </tr>
+					                <tr>
+						                <th>Dolor sit</th>
+						                <td>Nostrud exerci</td>
+						                <td class="currency">$75.00</td>
+					                </tr>
+					                <tr>
+						                <th>Nostrud exerci</th>
+						                <td>Lorem ipsum</td>
+						                <td class="currency">$200.00</td>
+					                </tr>
+					                <tr>
+						                <th>Lorem ipsum</th>
+						                <td>Dolor sit</td>
+						                <td class="currency">$64.00</td>
+					                </tr>
+					                <tr>
+						                <th>Dolor sit</th>
+						                <td>Nostrud exerci</td>
+						                <td class="currency">$36.00</td>
+					                </tr>
+				                </tbody>
+			                </table>		
+		                </div>
+	                </div>
+                </div>
+
+
             </div>
+        </div>--%>
+
+        <div style="clear:both;"></div>
+                <br />        
+        <div class="box">
+	        <h2>
+		        <a href="#" id="A1" style="cursor: pointer;" class="hidden">My Table</a>
+	        </h2>
+           <%-- <asp:GridView ID="ExperimentGrid" runat="server"
+                AutoGenerateColumns="true">
+            </asp:GridView>--%>
         </div>
+                <div style="clear:both;"></div>
     </div>
 </asp:Content>
 
