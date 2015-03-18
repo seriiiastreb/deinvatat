@@ -19,11 +19,41 @@ public partial class SystemSeqAdmin : System.Web.UI.Page
         if (allowHere)
         {
             FIll_ExperimentGrid();
+
+            string eventArgument = Request.Params.Get("__EVENTARGUMENT");
+
+            switch (Request.Params.Get("__EVENTTARGET"))
+            {
+                case "usersGridClik":
+                    GridAction(eventArgument);
+                    break;
+
+                default:
+                    break;
+            }
         }
         else
         {
            // Response.Redirect(Utils.GetApplicationPath(Request) + "/AccessDenied.aspx");
         }       
+    }
+
+    protected void GridAction(string action)
+    {
+        switch (action.ToLower())
+        {
+            case "add":
+                break;
+
+            case "edit":
+
+
+                break;
+
+            case "delete":
+                break;
+        }
+ 
     }
 
     protected void FIll_ExperimentGrid()
@@ -44,8 +74,8 @@ public partial class SystemSeqAdmin : System.Web.UI.Page
         sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
         sourceDT.Rows.Add(",jbzddhcb", "lujhdfjlijnl,", "uuhsdkjdjjnd", "ljhchuoxcv", ",kjdhckhducvn");
 
-        //ExperimentGrid.DataSource = sourceDT;
-        //ExperimentGrid.DataBind();
+        ExperimentGrid.DataSource = sourceDT;
+        ExperimentGrid.DataBind();
     }
 
 
@@ -908,5 +938,28 @@ public partial class SystemSeqAdmin : System.Web.UI.Page
     //#endregion Users Region
 
 
-    
+
+    protected void ExperimentGrid_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.Header) 
+        { e.Row.TableSection = TableRowSection.TableHeader; }
+
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';this.style.textDecoration='underline';";
+            e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
+            e.Row.Attributes["onclick"] = "javascript: SetSelection('" + ExperimentGrid.ClientID + "'," + e.Row.RowIndex + ");";
+
+
+            //for (int i = 0; i < e.Row.Cells.Count - 1; i++)
+            //{
+            //    e.Row.Cells[i].Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.ExperimentGrid, "Select$" + e.Row.RowIndex);
+            //}
+        }
+    }
+
+    protected void ExperimentGrid_Select(object sender, EventArgs e)
+    {
+
+    }
 }
