@@ -260,6 +260,11 @@ thead th {
 	background:#bbb;
 	padding:.4em 1em .2em;
 }
+
+.selectedRow{
+      background: #70CEFF;
+    }
+
 thead th.table-head {
 	font-size:1em;
 	font-weight:normal;
@@ -270,9 +275,9 @@ thead th.table-head {
 }
 tbody th,
 tbody td {
-	border-top:1px solid #bbb;
+	/*border-top:1px solid #bbb;
 	border-bottom:1px solid #bbb;
-	background:#eee;
+	background:#eee; */
 }
 tbody tr.odd th,
 tbody tr.odd td {

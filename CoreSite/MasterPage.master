@@ -21,6 +21,7 @@
         <% Response.Write("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + WriteAppPath() + "/css/jquery.contextMenu.css\" rel=\"stylesheet\" />"); %>     
         <% Response.Write("<script  type=\"text/javascript\" src=\"" + WriteAppPath() + "/scripts/jquery.contextMenu.js\"></script>"); %>  
         <% Response.Write("<script  type=\"text/javascript\" src=\"" + WriteAppPath() + "/scripts/jquery.ui.position.js\"></script>"); %>  
+        <% Response.Write("<script  type=\"text/javascript\" src=\"" + WriteAppPath() + "/scripts/helper.js\"></script>"); %>  
 
 <%--        <% Response.Write("<script  type=\"text/javascript\" src=\"" + WriteAppPath() + "/scripts/mootools-1.2.1-core.js\"></script>"); %>   
         <% Response.Write("<script  type=\"text/javascript\" src=\"" + WriteAppPath() + "/scripts/mootools-1.2-more.js\"></script>"); %>           
@@ -130,9 +131,12 @@
 			</div>
 			<div class="clear"></div>
 
-			<asp:ContentPlaceHolder id="MainPlaceHolder" runat="server">
+            <div style="padding-top:10px;">
+          
+			    <asp:ContentPlaceHolder id="MainPlaceHolder" runat="server">
         
-            </asp:ContentPlaceHolder>
+                </asp:ContentPlaceHolder>
+            </div>
 
 			<div class="grid_16" id="site_info">
 				<div class="box">
