@@ -470,38 +470,21 @@ public class Utils
     public static Security.User UserObject()
     {
         Security.User mUserObject = (Security.User)HttpContext.Current.Session[SessionKey_UserObject];
-        if (mUserObject == null) 
-            HttpContext.Current.Response.Redirect(Utils.GetApplicationPath(HttpContext.Current.Request) + "/Default.aspx");
         return mUserObject;
     }
 
     public static Security.Module ModuleSecurity()
     {
         Security.Module mModuleSecurity = (Security.Module)HttpContext.Current.Session[SessionKey_ModuleSecurity];
-        if (mModuleSecurity == null) 
-        {
-            //// to do store all request in encoded string
-            HttpContext.Current.Response.Redirect(Utils.GetApplicationPath(HttpContext.Current.Request) + "/Login.aspx");
-        }
-
-        //FormsAuthentication.RedirectToLoginPage(Utils.GetQueryString(HttpContext.Current.Request, HttpContext.Current.RewritePath  this.Page));
-
         return mModuleSecurity;
     }
 
     public static Security.MainModule ModuleMain()
     {
         Security.MainModule mModuleMain = (Security.MainModule)HttpContext.Current.Session[SessionKey_ModuleMain];
-        if (mModuleMain == null)
-        {
-            //// to do store all request in encoded string
-            HttpContext.Current.Response.Redirect(Utils.GetApplicationPath(HttpContext.Current.Request) + "/Login.aspx");
-        }
-
         return mModuleMain;
     }
-
-
+    
     public static bool PermissionAllowed(string moduleName, string domainName, Constants.Classifiers permission)
     {
         bool result = false;

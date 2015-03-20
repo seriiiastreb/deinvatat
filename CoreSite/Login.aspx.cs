@@ -22,9 +22,8 @@ public partial class Login : System.Web.UI.Page
             switch (action)
             {
                 case "logout":
-                    Session[Utils.SessionKey_UserObject] = null;                   
-                    FormsAuthentication.RedirectToLoginPage(Utils.GetQueryString(this.Page.Request, this.Page));
-			        Response.End();
+                    Session[Utils.SessionKey_UserObject] = null;
+                    Session[Utils.SessionKey_ModuleSecurity] = null;
                     break;
 
                 default:
