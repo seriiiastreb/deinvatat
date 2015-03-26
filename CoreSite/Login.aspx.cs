@@ -118,6 +118,7 @@ public partial class Login : System.Web.UI.Page
         Session[Utils.SessionKey_UserObject] = userObject;
         Session[Utils.SessionKey_ModuleSecurity] = new Security.Module();
 
+
         CreateModulesByRole(userObject);
 
         result = true;
