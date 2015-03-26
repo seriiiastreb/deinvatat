@@ -287,7 +287,7 @@ namespace Security
             return usersList;
         }
 
-        public DataTable UsersList()
+        public DataTable GetUsersList()
         {
             DataTable usersList = new DataTable();
 
@@ -375,7 +375,7 @@ namespace Security
             return result;
         }
 
-        public bool NewUser(string Nume, string Prenume, string login, string password, string email, List<string> groupList, int passwordstatusID, int recordstatusID)
+        public bool NewUser(string Nume, string Prenume, string login, string password, string email, int passwordstatusID, int recordstatusID)
         {
             bool result = false;
 
@@ -404,19 +404,19 @@ namespace Security
                     userID = (int)newUserID;
                 }
 
-                if (userID != 0)
-                {
-                    for (int i = 0; i < groupList.Count; i++)
-                    {
-                        string groupID = groupList[i];
-                        if (!groupID.Equals(string.Empty))
-                        {
-                            string inserQuery = "INSERT INTO st_users_roles(user_id, role_id) VALUES (" + userID + ",'" + groupID + "')";
-                            bool insertResult = Module.DataBridge.ExecuteNonQuery(inserQuery); // PG compliant
-                            mLastError += Module.DataBridge.LastError;
-                        }
-                    }
-                }                
+                //if (userID != 0)
+                //{
+                //    for (int i = 0; i < groupList.Count; i++)
+                //    {
+                //        string groupID = groupList[i];
+                //        if (!groupID.Equals(string.Empty))
+                //        {
+                //            string inserQuery = "INSERT INTO st_users_roles(user_id, role_id) VALUES (" + userID + ",'" + groupID + "')";
+                //            bool insertResult = Module.DataBridge.ExecuteNonQuery(inserQuery); // PG compliant
+                //            mLastError += Module.DataBridge.LastError;
+                //        }
+                //    }
+                //}                
             }
             catch
             {
@@ -426,7 +426,7 @@ namespace Security
             return result;
         }
         
-        public bool UpdateUser(int userID, string Nume, string Prenume, string login, string password, string email, List<string> groupList, int passwordstatusID, int recordstatusID, bool updatePassword)
+        public bool UpdateUser(int userID, string Nume, string Prenume, string login, string password, string email, int passwordstatusID, int recordstatusID, bool updatePassword)
         {
             bool result = false;
 
@@ -459,23 +459,23 @@ namespace Security
                 result = Module.DataBridge.ExecuteNonQuery(nonQuery, parameters); // PG compliant
                 mLastError += Module.DataBridge.LastError;
 
-                if (result)
-                {
-                    string deleteQuery = "DELETE FROM st_users_roles WHERE user_id = " + userID;
-                    bool deleteresult = Module.DataBridge.ExecuteNonQuery(deleteQuery); // PG compliant
-                    mLastError += Module.DataBridge.LastError;
+                //if (result)
+                //{
+                //    string deleteQuery = "DELETE FROM st_users_roles WHERE user_id = " + userID;
+                //    bool deleteresult = Module.DataBridge.ExecuteNonQuery(deleteQuery); // PG compliant
+                //    mLastError += Module.DataBridge.LastError;
 
-                    for (int i = 0; i < groupList.Count; i++)
-                    {
-                        string groupID = groupList[i];
-                        if (!groupID.Equals(string.Empty))
-                        {
-                            string inserQuery = "INSERT INTO st_users_roles(user_id, role_id) VALUES (" + userID + ",'" + groupID + "')";
-                            bool insertResult = Module.DataBridge.ExecuteNonQuery(inserQuery); // PG compliant
-                            mLastError += Module.DataBridge.LastError;
-                        }
-                    }
-                }
+                //    for (int i = 0; i < groupList.Count; i++)
+                //    {
+                //        string groupID = groupList[i];
+                //        if (!groupID.Equals(string.Empty))
+                //        {
+                //            string inserQuery = "INSERT INTO st_users_roles(user_id, role_id) VALUES (" + userID + ",'" + groupID + "')";
+                //            bool insertResult = Module.DataBridge.ExecuteNonQuery(inserQuery); // PG compliant
+                //            mLastError += Module.DataBridge.LastError;
+                //        }
+                //    }
+                //}
             }
             catch
             {
