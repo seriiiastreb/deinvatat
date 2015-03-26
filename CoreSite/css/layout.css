@@ -523,3 +523,7 @@ input.search.button {
 #kwick .four {
 	background: #999;
 }
+
+.hidden{
+    display:none;
+}
