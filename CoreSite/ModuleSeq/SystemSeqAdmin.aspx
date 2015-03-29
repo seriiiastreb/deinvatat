@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="SystemSeqAdmin.aspx.cs" Inherits="SystemSeqAdmin" %>
 <%@ Register TagPrefix="ajax" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="headPlaceHolder" Runat="Server">   
 
     <script language="javascript">
@@ -13,6 +14,7 @@
                 items: {
                     "add": { name: "Add", icon: "add", className: 'resetMarginLeft' },
                     "edit": { name: "Edit", icon: "edit", className: 'resetMarginLeft' },
+                    "rst": { name: "Reset PWD", icon: "keys", className: 'resetMarginLeft' },
                     //"cut": { name: "Cut", icon: "cut", className: 'resetMarginLeft' },
                     //"copy": { name: "Copy", icon: "copy", className: 'resetMarginLeft' },
                     //"paste": { name: "Paste", icon: "paste", className: 'resetMarginLeft' },
@@ -107,6 +109,8 @@
      </div>
 
      <div style="clear:both;"></div>
+
+
 
     <asp:HyperLink ID="addUserHyperLink" runat="server" Style=" display:none;"></asp:HyperLink>
 
@@ -258,13 +262,124 @@
                     <ajax:ValidatorCalloutExtender 
                     runat="Server"
                     ID="ValidatorCalloutExtender13"
-                    TargetControlID="resetPass_repeatTextBox" 
+                    TargetControlID="resetPass_CompareValidator" 
                     Width="250px"
                     PopupPosition="Right" />
 			</p>       
 
             <asp:Button ID="resetPassOkButton" CssClass="register-button" runat="server" Text="Save" Width="100px" onclick="resetPassOkButton_Click"  />
             <asp:Button ID="resetPassCancelButton" runat="server" Text="Cancel" Width="100px" CausesValidation="false" />                   
+              
+		</fieldset>    
+    </asp:Panel>
+
+
+
+
+    <asp:HyperLink ID="editUserHyperLink" runat="server" Style=" display:none;"></asp:HyperLink>
+
+    <ajax:ModalPopupExtender ID="editUserPopupExtender" runat="server"     
+        TargetControlID="editUserHyperLink"
+        PopupControlID = "editUserPanel" 
+        PopupDragHandleControlID="editUserLegend"
+        CancelControlID="editUserCancelButton"
+        DropShadow="true" >
+    </ajax:ModalPopupExtender>   
+
+    <asp:Panel runat="server" ID="editUserPanel" CssClass="grid_5 box" style="display:none; width: auto">
+        <fieldset>
+			<legend style="cursor:move;" runat="server" id="editUserLegend">Edit User</legend>
+			<p>
+				<label>First Name: </label>
+                <asp:TextBox ID="editUserNumeTextBox" runat="server" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="editUserNameRequiredFieldValidator" runat="server" EnableClientScript="true" Display="None" ControlToValidate="editUserNumeTextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
+                <ajax:ValidatorCalloutExtender 
+                    runat="Server"
+                    ID="ValidatorCalloutExtender7"                     
+                    TargetControlID="editUserNameRequiredFieldValidator" 
+                    Width="250px"
+                    PopupPosition="Right" />
+			</p>
+
+            <p>
+				<label>Last Name: </label>
+				<asp:TextBox ID="editUserLastNameTextBox" runat="server" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="ediuUserlastNameRequiredFieldValidator" runat="server" EnableClientScript="true" Display="None" ControlToValidate="editUserLastNameTextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
+                <ajax:ValidatorCalloutExtender 
+                    runat="Server"
+                    ID="ValidatorCalloutExtender8"
+                    TargetControlID="ediuUserlastNameRequiredFieldValidator" 
+                    Width="250px"
+                    PopupPosition="Right" />
+			</p>
+
+			<p>
+				<label>Login: </label>
+				<asp:TextBox ID="editUserLoginTextBox" runat="server" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="editUserLoginRequiredFieldValidator" runat="server" EnableClientScript="true" Display="None" ControlToValidate="editUserLoginTextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
+                <ajax:ValidatorCalloutExtender 
+                    runat="Server"
+                    ID="ValidatorCalloutExtender9"
+                    TargetControlID="editUserLoginRequiredFieldValidator" 
+                    Width="250px"
+                    PopupPosition="Right" />
+			</p>
+
+			<p>
+				<label>Email: </label>
+                <asp:TextBox ID="editUserEmailTextBox" runat="server" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="editUserEmailRequiredFieldValidator" runat="server" EnableClientScript="true" Display="None" ControlToValidate="editUserEmailTextBox"  ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator runat="server" ID="emailRegularExpressionValidator" Display="None" ControlToValidate="editUserEmailTextBox" ErrorMessage="The email is not well formed." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                <ajax:ValidatorCalloutExtender 
+                    runat="Server"
+                    ID="ValidatorCalloutExtender10"
+                    TargetControlID="editUserEmailRequiredFieldValidator" 
+                    Width="250px"
+                    PopupPosition="Right" />
+                <ajax:ValidatorCalloutExtender 
+                    runat="Server"
+                    ID="ValidatorCalloutExtender11"
+                    TargetControlID="emailRegularExpressionValidator" 
+                    Width="250px"
+                    PopupPosition="Right" />
+			</p>           
+
+            <p>
+				<label>Password Status: </label>
+                <asp:DropDownList ID="editUserPWDStatusDDL" runat="server" ></asp:DropDownList>
+			</p>
+
+	        <p>
+				<label>Record Status: </label>
+                <asp:DropDownList ID="editUserRECStatus" runat="server"  ></asp:DropDownList>
+			</p>
+
+            <asp:Button ID="editUserOkButton" CssClass="register-button" runat="server" Text="Save" Width="100px" onclick="editUserOkButton_Click"  />
+            <asp:Button ID="editUserCancelButton" runat="server" Text="Cancel" Width="100px" CausesValidation="false" />                   
+              
+		</fieldset>    
+    </asp:Panel>
+
+
+    <asp:HyperLink ID="deleteUserHyperLink" runat="server" Style=" display:none;"></asp:HyperLink>
+
+    <ajax:ModalPopupExtender ID="deleteUserModalPopupExtender" runat="server"     
+        TargetControlID="deleteUserHyperLink"
+        PopupControlID = "deleteUserPanel" 
+        PopupDragHandleControlID="deleteUserLegend"
+        CancelControlID="deleteUserCancelButton"
+        DropShadow="true" >
+    </ajax:ModalPopupExtender>   
+
+    <asp:Panel runat="server" ID="deleteUserPanel" CssClass="grid_5 box" style="display:none; width: auto">
+        <fieldset>
+			<legend style="cursor:move;" runat="server" id="deleteUserLegend">Delete User confirmation</legend>			
+            <p>
+                <h3>Sure you want to delete this user from the system? After this operation he will not have access to the system.</h3>
+            </p>
+
+            <asp:Button ID="deleteUserOkButton" CssClass="register-button" runat="server" Text="Ok" Width="100px" onclick="deleteUserOkButton_Click"  />
+            <asp:Button ID="deleteUserCancelButton" runat="server" Text="Cancel" Width="100px" CausesValidation="false" />                   
               
 		</fieldset>    
     </asp:Panel>
