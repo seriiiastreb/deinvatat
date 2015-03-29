@@ -362,6 +362,11 @@ public class Utils
 
             if (destinationDDl != null && inputTable != null)
             {
+                inputTable.Rows.InsertAt(inputTable.NewRow(), 0);
+                inputTable.Rows[0][valueField] = "0";
+                inputTable.Rows[0][displayTextField] = "**";
+                inputTable.AcceptChanges();
+
                 destinationDDl.DataSource = null;
                 destinationDDl.DataSource = inputTable;
                 destinationDDl.DataValueField = valueField;

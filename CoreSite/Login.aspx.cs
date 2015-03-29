@@ -24,6 +24,8 @@ public partial class Login : System.Web.UI.Page
                 case "logout":
                     Session[Utils.SessionKey_UserObject] = null;
                     Session[Utils.SessionKey_ModuleSecurity] = null;
+                    Session[Utils.SessionKey_ModuleMain] = null;
+
                     break;
 
                 default:
@@ -117,6 +119,7 @@ public partial class Login : System.Web.UI.Page
 
         Session[Utils.SessionKey_UserObject] = userObject;
         Session[Utils.SessionKey_ModuleSecurity] = new Security.Module();
+        Session[Utils.SessionKey_ModuleMain] = new Security.MainModule();
 
 
         CreateModulesByRole(userObject);
