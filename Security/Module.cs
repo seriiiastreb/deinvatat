@@ -410,7 +410,6 @@ namespace Security
                 string encryptPassword = Crypt.Module.ComputeHash(password);
 
                 string nonQuery = @"INSERT INTO Users (Nume,              Prenume,           login,             password,                email,          passwordstatus,            recordstatus)"
-                                        + " OUTPUT INSERTED.UserID "
                                         + " VALUES ( @Nume, @Prenume, @login, @encryptPassword, @email, @passwordstatusID, @recordstatusID)";
 
                 Hashtable parameters = new Hashtable();
@@ -422,13 +421,13 @@ namespace Security
                 parameters.Add("@passwordstatusID", passwordstatusID);
                 parameters.Add("@recordstatusID", recordstatusID);
 
-                object newUserID = Module.DataBridge.ExecuteScalarQuery(nonQuery, parameters); // PG compliant
+                result = Module.DataBridge.ExecuteNonQuery(nonQuery, parameters); // PG compliant
                 mLastError = Module.DataBridge.LastError;
-                int userID = 0;
-                if (newUserID != null)
-                {
-                    userID = (int)newUserID;
-                }
+                //int userID = 0;
+                //if (newUserID != null)
+                //{
+                //    userID = (int)newUserID;
+                //}
 
                 //if (userID != 0)
                 //{

@@ -8,13 +8,14 @@
         $(function () {
             $.contextMenu({
                 selector: '.context-menu-one',
+                trigger: 'none',
                 callback: function (key, options) {
                     doPost("usersGridClik", key);
                 },
                 items: {
                     "add": { name: "Add", icon: "add", className: 'resetMarginLeft' },
                     "edit": { name: "Edit", icon: "edit", className: 'resetMarginLeft' },
-                    "rst": { name: "Reset PWD", icon: "keys", className: 'resetMarginLeft' },
+                    "reset": { name: "Reset PWD", icon: "reset", className: 'resetMarginLeft' },
                     //"cut": { name: "Cut", icon: "cut", className: 'resetMarginLeft' },
                     //"copy": { name: "Copy", icon: "copy", className: 'resetMarginLeft' },
                     //"paste": { name: "Paste", icon: "paste", className: 'resetMarginLeft' },
@@ -25,12 +26,25 @@
                 }
             });
 
-            $('.context-menu-one').on('click', function (e) {
-                console.log('clicked', this);
-            })           
+//            $('.context-menu-one').on('click', function (e) {
+//              
+//                //console.log('clicked', this);
+//            })
         });
 
-        function SetSelection(gridID, selctedIndex, selectValHidID) {
+        function SetSelection(gridID, selctedIndex, selectValHidID,
+        function (ev) {
+    var $div = $(ev.target);
+    var $display = $div.find('.display');
+    
+    var offset = $div.offset();
+    var x = ev.clientX - offset.left;
+    var y = ev.clientY - offset.top;
+    
+    alert('x: ' + x + ', y: ' + y);
+}       
+        
+        ) {
 
             var hiddField = document.getElementById(selectValHidID);
             var grid = document.getElementById(gridID);
@@ -50,7 +64,41 @@
                     else {
                         rows[i].setAttribute("class", "odd");                        
                     }
-                }         
+                }
+            }
+
+//            //$(".context-menu-one").contextMenu({ x: mouseY(event), y: mouseX(event) });
+
+//            var offset = $(this).offset();
+//            var relativeX = (mouseX(evt) - offset.left);
+//            var relativeY = (mouseY(evt) - offset.top);
+//            $(".context-menu-one").contextMenu({ x: relativeX, y: relativeY });
+        }
+
+
+
+
+        function mouseX(evt) {
+            if (evt.pageX) {
+                return evt.pageX;
+            } else if (evt.clientX) {
+                return evt.clientX + (document.documentElement.scrollLeft ?
+           document.documentElement.scrollLeft :
+           document.body.scrollLeft);
+            } else {
+                return null;
+            }
+        }
+
+        function mouseY(evt) {
+            if (evt.pageY) {
+                return evt.pageY;
+            } else if (evt.clientY) {
+                return evt.clientY + (document.documentElement.scrollTop ?
+       document.documentElement.scrollTop :
+       document.body.scrollTop);
+            } else {
+                return null;
             }
         }
 
@@ -81,7 +129,7 @@
         </div>
     </div>
 
-     <div class="grid_8 box context-menu-one">
+     <div class="grid_8 box context-menu-one" style=" min-height:300px;">
         <h2>
 		    My Table
 	    </h2>
@@ -90,6 +138,7 @@
 
         <asp:GridView ID="usersGrid" runat="server"
             AlternatingRowStyle-CssClass="odd"
+            AutoGenerateColumns="false"
             onrowdatabound="usersGrid_RowDataBound"
             AllowPaging="false"  
             SelectedRowStyle-CssClass = "selectedRow">
@@ -128,7 +177,7 @@
 			<p>
 				<label>First Name: </label>
                 <asp:TextBox ID="addUser_Nume_TextBox" runat="server" ></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" EnableClientScript="true" Display="None" ControlToValidate="addUser_Nume_TextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ValidationGroup="addUser" EnableClientScript="true" Display="None" ControlToValidate="addUser_Nume_TextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
                 <ajax:ValidatorCalloutExtender 
                     runat="Server"
                     ID="PNReqE"                     
@@ -139,7 +188,7 @@
             <p>
 				<label>Last Name: </label>
 				<asp:TextBox ID="addUser_Prenume_TextBox" runat="server" ></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" EnableClientScript="true" Display="None" ControlToValidate="addUser_Prenume_TextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  ValidationGroup="addUser" EnableClientScript="true" Display="None" ControlToValidate="addUser_Prenume_TextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
                 <ajax:ValidatorCalloutExtender 
                     runat="Server"
                     ID="ValidatorCalloutExtender1"
@@ -151,7 +200,7 @@
 			<p>
 				<label>Login: </label>
 				<asp:TextBox ID="addUser_Login_TextBox" runat="server" ></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" EnableClientScript="true" Display="None" ControlToValidate="addUser_Login_TextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"  ValidationGroup="addUser" EnableClientScript="true" Display="None" ControlToValidate="addUser_Login_TextBox" ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
                 <ajax:ValidatorCalloutExtender 
                     runat="Server"
                     ID="ValidatorCalloutExtender2"
@@ -163,8 +212,8 @@
 			<p>
 				<label>Email: </label>
                 <asp:TextBox ID="addUser_Email_TextBox" runat="server" ></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" EnableClientScript="true" Display="None" ControlToValidate="addUser_Email_TextBox"  ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator runat="server" ID="valEmailPattern" Display="None" ControlToValidate="addUser_Email_TextBox" ErrorMessage="The email is not well formed." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"  ValidationGroup="addUser"  EnableClientScript="true" Display="None" ControlToValidate="addUser_Email_TextBox"  ErrorMessage="This field is mandatory."> </asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator runat="server" ID="valEmailPattern" Display="None"  ValidationGroup="addUser" ControlToValidate="addUser_Email_TextBox" ErrorMessage="The email is not well formed." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 <ajax:ValidatorCalloutExtender 
                     runat="Server"
                     ID="ValidatorCalloutExtender3"
@@ -182,7 +231,7 @@
             <p>
 				<label>Password: </label>
                 <asp:TextBox ID="addUser_Password_TextBox" runat="server" TextMode="Password"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="addUser_Password_RequiredFieldValidator" runat="server" EnableClientScript="true" Display="None" ControlToValidate="addUser_Password_TextBox" ErrorMessage="Acest cimp este obligatoriu"> </asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="addUser_Password_RequiredFieldValidator" runat="server"  ValidationGroup="addUser" EnableClientScript="true" Display="None" ControlToValidate="addUser_Password_TextBox" ErrorMessage="Acest cimp este obligatoriu"> </asp:RequiredFieldValidator>
                 <ajax:ValidatorCalloutExtender 
                     runat="Server"
                     ID="ValidatorCalloutExtender4"
@@ -199,6 +248,7 @@
                     ControlToCompare="addUser_RepeatPassword_TextBox"
                     ControlToValidate="addUser_Password_TextBox"
                     ErrorMessage="Attention! Passwords do not match."
+                    ValidationGroup="addUser" 
                     Display="None" />
 
                     <ajax:ValidatorCalloutExtender 
@@ -218,7 +268,7 @@
                 <asp:DropDownList ID="userDetails_RecordStatusDDL" runat="server"  ></asp:DropDownList>
 			</p>
 
-            <asp:Button ID="addUser_SaveButton" CssClass="register-button" runat="server" Text="Save" Width="100px" onclick="addUser_SaveButton_Click"  />
+            <asp:Button ID="addUser_SaveButton" CssClass="register-button" runat="server" Text="Save" Width="100px"  ValidationGroup="addUser" onclick="addUser_SaveButton_Click"  />
             <asp:Button ID="addUser_CancelButton" runat="server" Text="Cancel" Width="100px" CausesValidation="false" />                   
               
 		</fieldset>    
