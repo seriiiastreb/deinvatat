@@ -5,6 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headPlaceHolder" Runat="Server">   
 
     <script language="javascript">
+
         $(function () {
             $.contextMenu({
                 selector: '.context-menu-one',
@@ -25,83 +26,44 @@
                     //  "quit": { name: "Quit", icon: "quit", className: 'resetMarginLeft' }
                 }
             });
-
-//            $('.context-menu-one').on('click', function (e) {
-//              
-//                //console.log('clicked', this);
-//            })
         });
 
-        function SetSelection(gridID, selctedIndex, selectValHidID,
-        function (ev) {
-    var $div = $(ev.target);
-    var $display = $div.find('.display');
-    
-    var offset = $div.offset();
-    var x = ev.clientX - offset.left;
-    var y = ev.clientY - offset.top;
-    
-    alert('x: ' + x + ', y: ' + y);
-}       
-        
-        ) {
 
-            var hiddField = document.getElementById(selectValHidID);
+        $(function () {
+            $("[id*=<%= usersGrid.ClientID %>] td").mousedown(function (e) {
+
+                var selectedRowIndex = $(this).parent().index();
+                var hiddField = document.getElementById('<%= usersGrid_Selection_HiddenValue.ClientID %>');
+                hiddField.value = selectedRowIndex;
+
+                var gridID = '<%= usersGrid.ClientID %>';
+                ResetGridSelection(gridID);
+
+                $(this).closest("tr").removeClass('odd');
+                $(this).closest("tr").toggleClass("selectedRow");
+
+                if (e.which == 3) //1: left, 2: middle, 3: right
+                {
+                    $(".context-menu-one").contextMenu({ x: e.pageX, y: e.pageY });
+                }
+            });
+        });
+
+
+        function ResetGridSelection(gridID) {
             var grid = document.getElementById(gridID);
             var rows = grid.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
-
             for (var i = 0; i < rows.length; i++) {
-
-                if (i == selctedIndex) {
-                    rows[i].setAttribute("class", "selectedRow");
-                    hiddField.value = selctedIndex;
+                if (i % 2 == 0) {
+                    rows[i].removeAttribute("class");   
                 }
                 else {
-                    if (i % 2 == 0) {
-                        rows[i].removeAttribute("class");
-                    }
-                    else {
-                        rows[i].setAttribute("class", "odd");                        
-                    }
-                }
-            }
-
-//            //$(".context-menu-one").contextMenu({ x: mouseY(event), y: mouseX(event) });
-
-//            var offset = $(this).offset();
-//            var relativeX = (mouseX(evt) - offset.left);
-//            var relativeY = (mouseY(evt) - offset.top);
-//            $(".context-menu-one").contextMenu({ x: relativeX, y: relativeY });
-        }
-
-
-
-
-        function mouseX(evt) {
-            if (evt.pageX) {
-                return evt.pageX;
-            } else if (evt.clientX) {
-                return evt.clientX + (document.documentElement.scrollLeft ?
-           document.documentElement.scrollLeft :
-           document.body.scrollLeft);
-            } else {
-                return null;
+                    rows[i].setAttribute("class", "odd");
+                }                
             }
         }
-
-        function mouseY(evt) {
-            if (evt.pageY) {
-                return evt.pageY;
-            } else if (evt.clientY) {
-                return evt.clientY + (document.documentElement.scrollTop ?
-       document.documentElement.scrollTop :
-       document.body.scrollTop);
-            } else {
-                return null;
-            }
-        }
-
+        
     </script>
 
 </asp:Content>
@@ -137,8 +99,8 @@
         <asp:HiddenField ID="usersGrid_Selection_HiddenValue" runat="server" />
 
         <asp:GridView ID="usersGrid" runat="server"
-            AlternatingRowStyle-CssClass="odd"
             AutoGenerateColumns="false"
+            AlternatingRowStyle-CssClass="odd"
             onrowdatabound="usersGrid_RowDataBound"
             AllowPaging="false"  
             SelectedRowStyle-CssClass = "selectedRow">

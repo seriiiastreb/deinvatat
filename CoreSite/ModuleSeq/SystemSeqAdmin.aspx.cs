@@ -92,14 +92,16 @@ public partial class SystemSeqAdmin : System.Web.UI.Page
 
     protected void usersGrid_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-        if (e.Row.RowType == DataControlRowType.Header) 
+        if (e.Row.RowType == DataControlRowType.Header)
         { e.Row.TableSection = TableRowSection.TableHeader; }
 
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';this.style.textDecoration='underline';";
             e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
-            e.Row.Attributes["onclick"] = "javascript: SetSelection('" + usersGrid.ClientID + "'," + e.Row.RowIndex + ", '" + usersGrid_Selection_HiddenValue.ClientID + "');";
+            //e.Row.Attributes["mousedown"] = "SetSelection(this.event,'" + usersGrid.ClientID + "'," + e.Row.RowIndex + ", '" + usersGrid_Selection_HiddenValue.ClientID + "');";
+            //e.Row.Attributes["onrightclick"] = "javascript: SetSelection('" + usersGrid.ClientID + "'," + e.Row.RowIndex + ", '" + usersGrid_Selection_HiddenValue.ClientID + "');";
+
         }
     }
 
