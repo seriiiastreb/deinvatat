@@ -50,6 +50,13 @@
         });
 
 
+        $("#usersRegionDIV").mousedown(function (e) {
+            if (e.button == 3) {
+                $(".context-menu-one").contextMenu({ x: e.pageX, y: e.pageY });
+            }
+        }); 
+
+
         function ResetGridSelection(gridID) {
             var grid = document.getElementById(gridID);
             var rows = grid.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
@@ -91,7 +98,7 @@
         </div>
     </div>
 
-     <div class="grid_8 box context-menu-one" style=" min-height:300px;">
+     <div class="grid_8 box context-menu-one" id="usersRegionDIV" style=" min-height:300px;">
         <h2>
 		    My Table
 	    </h2>
